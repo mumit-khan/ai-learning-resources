@@ -257,6 +257,10 @@ Curated August 2026, reviewed and expanded across several follow-up passes. Ever
   The single most-recommended conceptual explainer of transformer architecture; used in course materials at Stanford, MIT, Harvard, and CMU.
   https://jalammar.github.io/illustrated-transformer/
 
+- **Guide to All 70+ Scikit-Learn Models and When to Use Them** — Wei Ming T. / ApX Machine Learning — *Foundational/Intermediate* — Core ML — **NEW**
+  Overview of 75 scikit-learn ML models grouped by task (regression, classification, ensembles, clustering, dimensionality reduction, neural nets), each with a code snippet and, more usefully, an explicit "when to avoid" section; 23 are starred as the shortlist worth actually knowing. A selection lookup table, not a course.
+  https://apxml.com/posts/scikit-learn-models-guide
+
 - **12-Factor Agents** — Dex Horthy / HumanLayer — *Advanced* — Agentic AI, MLOps
   The best-known practitioner framework for building production-grade (not toy) LLM agents — reliability, context/control-flow, human-in-the-loop design.
   https://github.com/humanlayer/12-factor-agents
