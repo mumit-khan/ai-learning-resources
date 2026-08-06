@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Agentic AI / ML / GenAI Learning Resources</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --panel: #f7f7f8;
+    --border: #e5e5e7;
+    --text: #1a1a1e;
+    --text-muted: #6b6b73;
+    --accent: #6d4de6;
+    --accent-soft: #efe9fd;
+    --foundational: #2f9e6b;
+    --intermediate: #2b7de0;
+    --advanced: #c0392b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 14px; line-height: 1.5;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 24px 60px; }
+  header h1 { font-size: 22px; margin: 0 0 4px; }
+  header p.sub { color: var(--text-muted); margin: 0 0 20px; max-width: 820px; }
+  .legend { display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 18px; font-size: 12px; color: var(--text-muted); }
+  .legend span.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+
+  nav.source-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 12px; }
+  nav.source-nav .chip { font-size: 12px; }
+
+  .controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom: 20px; padding: 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
+  .controls input[type="search"] {
+    flex: 1 1 220px; padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 14px; background: #fff; color: var(--text);
+  }
+  .chip-group { display:flex; gap:6px; flex-wrap:wrap; }
+  .chip {
+    padding: 5px 11px; border-radius: 999px; border: 1px solid var(--border);
+    background: #fff; color: var(--text-muted); font-size: 12.5px;
+    cursor: pointer; user-select: none; transition: all .12s ease;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--text); }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .count { color: var(--text-muted); font-size: 12.5px; margin-left: auto; white-space: nowrap; }
+
+  .category-block { margin-bottom: 30px; scroll-margin-top: 16px; }
+  .category-block h2 {
+    font-size: 15px; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--accent); border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 6px; margin: 0 0 14px;
+  }
+  .cat-note { color: var(--text-muted); font-size: 12.5px; font-style: italic; margin: -8px 0 14px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; background: #fff; }
+  .card.is-new { border-color: var(--foundational); box-shadow: 0 0 0 1px var(--foundational) inset; }
+  .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:4px; }
+  .card h3 { font-size: 14.5px; margin: 0; }
+  .card h3 a { color: var(--text); text-decoration: none; }
+  .card h3 a:hover { color: var(--accent); text-decoration: underline; }
+  .new-badge { font-size: 10px; font-weight: 700; color: #fff; background: var(--foundational); padding: 2px 6px; border-radius: 999px; white-space: nowrap; }
+  .card .author { color: var(--text-muted); font-size: 12.5px; margin: 2px 0 8px; }
+  .card p.desc { margin: 0 0 10px; color: #333; font-size: 13px; }
+  .tags { display:flex; flex-wrap:wrap; gap:5px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .tag.level-Foundational { background: #e6f5ee; color: var(--foundational); }
+  .tag.level-Intermediate { background: #e8f1fd; color: var(--intermediate); }
+  .tag.level-Advanced { background: #fbe6e3; color: var(--advanced); }
+  .tag.area { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+  .empty { color: var(--text-muted); padding: 40px 0; text-align:center; }
+  footer { margin-top: 40px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border); padding-top: 14px; }
+  footer .global-note { margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Agentic AI / ML / GenAI — Curated Learning Resources</h1>
+    <p class="sub">A vetted, high-signal list for engineers from foundational on-ramps through staff-level depth. Click a source below to jump straight to it, or filter by level/focus area, or search by keyword. Items flagged in the most recent review are marked <span class="new-badge">NEW</span>.</p>
+  </header>
+
+  <nav class="source-nav" id="sourceNav"></nav>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--foundational)"></span>Foundational — well-regarded, accessible on-ramp (not 101, a notch below Intermediate)</span>
+    <span><span class="dot" style="background:var(--intermediate)"></span>Intermediate — solid ML/software background, ready to go deeper</span>
+    <span><span class="dot" style="background:var(--advanced)"></span>Advanced — senior/staff depth, research-adjacent or production-critical</span>
+  </div>
+
+  <div class="controls">
+    <input type="search" id="search" placeholder="Search by name, author, or keyword…">
+    <div class="chip-group" id="levelChips"></div>
+    <div class="chip-group" id="areaChips"></div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <div id="results"></div>
+
+  <footer>
+    Generated by md_to_html.py from genai_learning_resources.md — edit the Markdown, then re-run the script to refresh this page.
+    <div class="global-note">Fresh-grad/101-level content (Stanford CS229, generic intro material) remains excluded — CS229 got a 2026 refresh but reviewers still describe it as more mathematically demanding than a true on-ramp, so it stays out even at the Foundational tier. Papers with Code (shut down 2025) and AutoGen-specific blogs (AutoGen now in maintenance mode) remain excluded.</div>
+  </footer>
+</div>
+
+<script>
+const AREAS = {"genai": "GenAI / LLM engineering", "core": "Core ML & DL foundations", "agent": "Agentic AI & frameworks", "mlops": "MLOps & production", "eval": "Evaluation, governance & safety", "ainative": "AI-native software development"};
+const CATEGORY_ORDER = ["Twitter / X", "Podcasts", "YouTube Channels", "Courses", "Blogs", "Books", "Newsletters & Communities", "GitHub Curated Lists & Repos", "AI-native Software Development"];
+const CATEGORY_NOTES = {"Twitter / X": "Reviewed but excluded: @summarizedml could not be verified as active or identifiable \u2014 excluded pending independent verification. @emollick and @mattpocockuk were previously excluded here as too business-focused / too narrowly TypeScript-focused respectively \u2014 revisited this round for the specific angles above (model comparisons; agent-skills tooling) and now included.", "GitHub Curated Lists & Repos": "Reviewed but excluded: e2b-dev/awesome-ai-agents (27.8k stars) \u2014 despite the high star count, its last release was 2023 and it has 533 open, unmerged pull requests. Also excluded a cluster of near-identical \"awesome-ai-agents-2026\"-style repos across unrelated accounts sharing the same templated description \u2014 a textbook SEO/content-farm pattern rather than genuine curation.", "AI-native Software Development": "Also highly relevant to this category and already listed elsewhere to avoid duplication: Simon Willison (Twitter/Blogs), 12-Factor Agents (Blogs), and Latent Space (Podcasts/Newsletters) all cover AI-native/agentic coding in depth. Star counts and follower figures in this fast-moving niche should be treated as approximate."};
+const DATA = [
+  {
+    "cat": "Twitter / X",
+    "title": "Andrej Karpathy",
+    "author": "@karpathy \u2014 Anthropic (pretraining), ex-OpenAI founding member, ex-Tesla AI director",
+    "desc": "First-principles explainers on LLM training/inference internals and how LLMs are reshaping software engineering.",
+    "url": "https://twitter.com/karpathy",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "core",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Simon Willison",
+    "author": "@simonw \u2014 creator of the `llm` CLI/library, co-creator of Django",
+    "desc": "Hands-on, code-level posts on prompting, tool use, and new model capabilities the day they ship. High signal, zero hype.",
+    "url": "https://twitter.com/simonw",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Harrison Chase",
+    "author": "@hwchase17 \u2014 co-founder/CEO, LangChain",
+    "desc": "Direct source on LangGraph roadmap, agent middleware design, and real feedback from building agent infra at production scale.",
+    "url": "https://twitter.com/hwchase17",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Jerry Liu",
+    "author": "@jerryjliu0 \u2014 co-founder/CEO, LlamaIndex",
+    "desc": "Practical, architecture-level posts on RAG pipeline design and agentic layers over retrieval, from someone shipping the tooling.",
+    "url": "https://twitter.com/jerryjliu0",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "agent",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Chip Huyen",
+    "author": "@chipro \u2014 author, \"AI Engineering\" & \"Designing ML Systems\"",
+    "desc": "Productionizing foundation-model applications, system design tradeoffs, and MLOps fundamentals from one of the field's clearest writers.",
+    "url": "https://twitter.com/chipro",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "mlops",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Hamel Husain",
+    "author": "@HamelHusain \u2014 ML engineer, co-teaches AI Evals for Engineers & PMs",
+    "desc": "The go-to voice for rigorous, non-hand-wavy LLM and agent evaluation methodology.",
+    "url": "https://twitter.com/HamelHusain",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Arvind Narayanan",
+    "author": "@random_walker \u2014 Princeton CS professor, director of Princeton CITP",
+    "desc": "Evidence-based critiques of inflated AI claims and AI policy framing \u2014 an essential counterweight for engineers shaping technical strategy.",
+    "url": "https://twitter.com/random_walker",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Sebastian Raschka",
+    "author": "@rasbt \u2014 LLM research engineer, author of \"Build a Large Language Model From Scratch\"",
+    "desc": "Architecture deep-dives and open-model analysis; also runs the Ahead of AI newsletter (see Newsletters).",
+    "url": "https://twitter.com/rasbt",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Dex Horthy",
+    "author": "@dexhorthy \u2014 Founder/CEO, HumanLayer; creator of \"12-Factor Agents\"",
+    "desc": "Practitioner-level content on agent reliability and context engineering (see 12-Factor Agents in Blogs).",
+    "url": "https://twitter.com/dexhorthy",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Aakanksha Chowdhery",
+    "author": "@achowdhery \u2014 Lead author on PaLM, Gemini pretraining contributor, now at Reflection AI; Stanford adjunct",
+    "desc": "Top-tier technical content on pretraining, scaling, and RL for autonomous coding agents. One of the most credentialed voices on this list.",
+    "url": "https://twitter.com/achowdhery",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "core",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Paul Iusztin",
+    "author": "@pauliusztin_ \u2014 Senior AI engineer, co-author of \"LLM Engineer's Handbook\"",
+    "desc": "Practical production-LLM-systems content. Note: modest following on X specifically \u2014 his Substack/Decoding ML carries more volume.",
+    "url": "https://twitter.com/pauliusztin_",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "AI Engineer",
+    "author": "@aiDotEngineer \u2014 official account, AI Engineer World's Fair/Summit conference series",
+    "desc": "Not an individual voice \u2014 a strong discovery channel for talks and community signal (see also YouTube).",
+    "url": "https://twitter.com/aiDotEngineer",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "agent",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Dax",
+    "author": "@thdxr \u2014 creator of opencode and SST",
+    "desc": "Deep, hands-on agentic-tooling content \u2014 building a leading open-source AI coding agent in the open.",
+    "url": "https://twitter.com/thdxr",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Salvatore Sanfilippo",
+    "author": "@antirez \u2014 creator of Redis",
+    "desc": "A rare, credible skeptical/systems-engineering voice on agentic coding \u2014 argues for staying in the loop rather than over-delegating to agents.",
+    "url": "https://twitter.com/antirez",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent",
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Ethan Mollick",
+    "author": "@emollick \u2014 Wharton professor, author of \"Co-Intelligence\"",
+    "desc": "Gets early access to frontier models and publishes hands-on, same-prompt comparisons (GPT, Claude, Gemini, open-weights) on real coding/research tasks \u2014 useful as an early capability radar, though experiential rather than a formal benchmark. Revisited and added specifically for this.",
+    "url": "https://twitter.com/emollick",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "eval"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "Twitter / X",
+    "title": "Matt Pocock",
+    "author": "@mattpocockuk \u2014 TypeScript educator, creator of Total TypeScript and AI Hero",
+    "desc": "Publishes and maintains \"Skills for Real Engineers\" (mattpocock/skills, see AI-native Software Development) \u2014 Claude Code/Cursor/Codex-portable agent Skills enforcing TDD, structured debugging, and architecture review, explicitly positioned as the opposite of one-shot \"vibe coding.\" Revisited and added specifically for this.",
+    "url": "https://twitter.com/mattpocockuk",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "ainative",
+      "agent"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "Podcasts",
+    "title": "Latent Space: The AI Engineer Podcast",
+    "author": "Shawn \"swyx\" Wang & Alessio Fanelli",
+    "desc": "Practitioner-focused interviews with engineers/researchers at OpenAI, Anthropic, Databricks and more \u2014 deep dives on foundation models, agents, inference, and evals.",
+    "url": "https://www.latent.space/podcast",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Podcasts",
+    "title": "The TWIML AI Podcast",
+    "author": "Sam Charrington",
+    "desc": "Long-running (since 2016), broad researcher/practitioner interviews spanning ML fundamentals, MLOps, and agentic systems.",
+    "url": "https://twimlai.com/podcast/twimlai",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "core",
+      "agent",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Podcasts",
+    "title": "MLOps Community Podcast",
+    "author": "Demetrios Brinkmann",
+    "desc": "Backed by the 100k+ member MLOps Community \u2014 concrete, production-grade deployment, monitoring, and agent-ops content, no hype.",
+    "url": "https://podcast.mlops.community/",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "mlops",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Podcasts",
+    "title": "Machine Learning Street Talk",
+    "author": "Tim Scarfe & Keith Duggar",
+    "desc": "The most technically dense show on this list \u2014 research-level discussions of ML theory, interpretability, and AI safety with top researchers.",
+    "url": "https://www.youtube.com/c/MachineLearningStreetTalk",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "core",
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Podcasts",
+    "title": "The Cognitive Revolution",
+    "author": "Nathan Labenz & Erik Torenberg",
+    "desc": "Weekly deep dives with builders and safety/policy analysts; strong on agentic-AI capability analysis paired with safety and governance.",
+    "url": "https://www.cognitiverevolution.ai/",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "agent",
+      "eval",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Podcasts",
+    "title": "80,000 Hours Podcast",
+    "author": "Rob Wiblin, Luisa Rodriguez, Zershaaneh Qureshi",
+    "desc": "The most substantive long-form podcast on AI governance and safety \u2014 rigorous, technical interviews with people doing the alignment/policy work.",
+    "url": "https://80000hours.org/podcast/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Podcasts",
+    "title": "AI Engineering Podcast",
+    "author": "Tobias Macey",
+    "desc": "Focused on architecting production AI/LLM applications \u2014 RAG pipelines, agent tooling, and MCP \u2014 practitioner-level, low on hype.",
+    "url": "https://www.aiengineeringpodcast.com/",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "mlops",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "Andrej Karpathy \u2014 \"Zero to Hero\" / Let's Build GPT",
+    "author": "Andrej Karpathy",
+    "desc": "The single best from-scratch, code-first path from backprop to a working GPT. Canonical resource, still the top recommendation in 2026.",
+    "url": "https://www.youtube.com/@AndrejKarpathy",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "Umar Jamil",
+    "author": "@umarjamilai",
+    "desc": "Rigorous \"build it from scratch\" walkthroughs \u2014 coding a Transformer from scratch in PyTorch, deriving attention math, paper breakdowns.",
+    "url": "https://www.youtube.com/@umarjamilai",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "LangChain (official channel)",
+    "author": "LangChain team",
+    "desc": "Maintained by the framework's own engineers \u2014 graph-based agent state management, tool use, and RAG evaluation for the most widely deployed agent orchestration framework.",
+    "url": "https://www.youtube.com/@LangChain",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "Weights & Biases",
+    "author": "W&B team",
+    "desc": "LLM evaluation, fine-tuning workflows, and production ML monitoring taught by practitioners who build the tooling itself.",
+    "url": "https://www.youtube.com/@WeightsBiases",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "mlops",
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "Robert Miles AI Safety",
+    "author": "Robert Miles",
+    "desc": "The clearest, most technically honest explainer of AI alignment/safety concepts. Upload cadence has slowed \u2014 treat as a well-preserved back catalog rather than an actively releasing channel.",
+    "url": "https://www.youtube.com/@RobertMilesAI",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "3Blue1Brown \u2014 Neural Networks / Deep Learning series",
+    "author": "Grant Sanderson",
+    "desc": "Unmatched visual/geometric intuition for backprop, gradient descent, and (in the \"Attention in transformers\" video) attention itself. The resource practitioners most often credit for making these concepts \"click.\"",
+    "url": "https://www.3blue1brown.com/topics/neural-networks",
+    "levels": [
+      "Foundational"
+    ],
+    "areas": [
+      "core",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "StatQuest with Josh Starmer",
+    "author": "Josh Starmer, PhD",
+    "desc": "Strips away notation-heavy jargon to build genuine statistical/ML intuition (gradient descent, regularization, trees, transformers), then layers the math back in. Not 101 \u2014 builds real understanding fast.",
+    "url": "https://www.youtube.com/c/joshstarmer",
+    "levels": [
+      "Foundational"
+    ],
+    "areas": [
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "YouTube Channels",
+    "title": "AI Engineer World's Fair / Summit \u2014 talks",
+    "author": "AI Engineer conference",
+    "desc": "Recorded sessions from the largest AI engineering conference \u2014 production agent case studies and AI-engineering-stack deep dives directly from teams at Anthropic, OpenAI, LangChain, and others.",
+    "url": "https://www.youtube.com/@aiDotEngineer",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "agent",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Agentic AI",
+    "author": "DeepLearning.AI \u2014 Andrew Ng",
+    "desc": "Builds the four foundational agent patterns (Reflection, Tool Use, Planning, Multi-Agent Collaboration) from scratch in raw Python, vendor-neutral.",
+    "url": "https://www.deeplearning.ai/courses/agentic-ai",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "AI Agents in LangGraph",
+    "author": "DeepLearning.AI \u2014 Harrison Chase & Rotem Weiss",
+    "desc": "Building an agent from scratch, then rebuilding with LangGraph \u2014 state management, agentic search, debugging agent graphs. Shorter primer; see LangChain Academy for a deeper dive.",
+    "url": "https://www.deeplearning.ai/courses/ai-agents-in-langgraph",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "MCP: Build Rich-Context AI Apps with Anthropic",
+    "author": "DeepLearning.AI \u2014 built with Anthropic",
+    "desc": "How the Model Context Protocol works under the hood, building your own MCP server, connecting it to Claude-powered apps.",
+    "url": "https://www.deeplearning.ai/courses/mcp-build-rich-context-ai-apps-with-anthropic",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Building and Evaluating Advanced RAG",
+    "author": "DeepLearning.AI \u2014 Jerry Liu & Anupam Datta",
+    "desc": "Sentence-window and auto-merging retrieval, experiment tracking, and the \"RAG triad\" for rigorous evaluation. Assumes a working RAG baseline.",
+    "url": "https://www.deeplearning.ai/courses/building-evaluating-advanced-rag",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Fast & Efficient LLM Inference with vLLM",
+    "author": "DeepLearning.AI \u2014 built with Red Hat",
+    "desc": "Full optimize-deploy-benchmark workflow: quantization, PagedAttention/prefix caching/continuous batching, load-testing.",
+    "url": "https://www.deeplearning.ai/courses/fast-and-efficient-llm-inference-with-vllm",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Red Teaming LLM Applications",
+    "author": "DeepLearning.AI \u2014 built with Giskard",
+    "desc": "Applies cybersecurity red-teaming methodology to LLM apps \u2014 prompt injection attacks, manual and automated vulnerability testing.",
+    "url": "https://www.deeplearning.ai/courses/red-teaming-llm-applications",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Full Stack Deep Learning \u2014 LLM Bootcamp",
+    "author": "YouTube \u2014 Sergey Karayev, Josh Tobin, Charles Frye",
+    "desc": "Strong on fundamentals (prompting, LLMOps, project walkthroughs), but the flagship recorded lectures are the Spring 2023 cohort \u2014 predates agents, MCP, and reasoning-model-era practice. Treat as foundations, not current-state.",
+    "url": "https://www.youtube.com/playlist?list=PL1T8fO7ArWleyIqOy37OVXsP4hFXymdOZ",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Stanford CS25: Transformers United (V6)",
+    "author": "YouTube / Stanford University",
+    "desc": "Graduate seminar series with rotating leading researchers (Hinton, Karpathy, original Transformer authors) on transformer internals and scaling.",
+    "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "core",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Practical Deep Learning for Coders",
+    "author": "fast.ai \u2014 Jeremy Howard & Sylvain Gugger",
+    "desc": "Code-first, top-down pedagogy \u2014 train a real model in lesson 1, learn theory after. No PhD-level math required. Still actively taught and referenced in 2026.",
+    "url": "https://course.fast.ai/",
+    "levels": [
+      "Foundational"
+    ],
+    "areas": [
+      "core",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Hugging Face \u2014 LLM Course",
+    "author": "Hugging Face",
+    "desc": "Free, continuously-updated 12-chapter course on the modern open-source LLM stack. Best practical bridge from theory to shipped code.",
+    "url": "https://huggingface.co/learn/llm-course/chapter1/1",
+    "levels": [
+      "Foundational"
+    ],
+    "areas": [
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Hugging Face Agents Course",
+    "author": "Hugging Face (free, certified)",
+    "desc": "Certified course covering agent frameworks (LangChain, LlamaIndex, smolagents) with a benchmark assessment.",
+    "url": "https://huggingface.co/learn/agents-course/unit0/introduction",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "LangChain Academy",
+    "author": "LangChain (free, self-paced)",
+    "desc": "~13 hours across three courses \u2014 the deeper-dive complement to the shorter DeepLearning.AI LangGraph course above.",
+    "url": "https://academy.langchain.com/",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "Made With ML",
+    "author": "Goku Mohandas / Anyscale (free course + repo)",
+    "desc": "First-principles production ML system design, from prototype to a live monitored service \u2014 one of the gentlest genuinely non-101 on-ramps into MLOps/LLMOps.",
+    "url": "https://madewithml.com/",
+    "levels": [
+      "Foundational",
+      "Intermediate"
+    ],
+    "areas": [
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "AI Evals for Engineers & PMs",
+    "author": "Hamel Husain & Shreya Shankar (Maven, paid cohort)",
+    "desc": "The most-cited practitioner course on building rigorous LLM/agent evaluation pipelines \u2014 error analysis, synthetic data, LLM-as-judge design.",
+    "url": "https://maven.com/parlance-labs/evals",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval",
+      "agent",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Courses",
+    "title": "AI Safety Fundamentals",
+    "author": "BlueDot Impact",
+    "desc": "The standard on-ramp used across the AI safety field \u2014 structured reading plus cohort-based discussion. Real technical/policy depth without requiring years of research background; ~75% completion rate.",
+    "url": "https://bluedot.org/courses/technical-ai-safety",
+    "levels": [
+      "Foundational"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "Anthropic Engineering Blog",
+    "author": "Anthropic engineering team",
+    "desc": "No-fluff writeups from the team building Claude. Flagship post \"Building Effective Agents\" is the field's most-cited primer on agent architecture patterns (start there); other posts go much deeper.",
+    "url": "https://www.anthropic.com/engineering",
+    "levels": [
+      "Foundational",
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "Lil'Log",
+    "author": "Lilian Weng \u2014 Anthropic, ex-OpenAI applied AI research lead",
+    "desc": "Long-running, paper-quality deep dives on agents, RLHF, and reasoning. Widely regarded as one of the highest signal-to-noise ML blogs in existence.",
+    "url": "https://lilianweng.github.io/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "core",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "Eugene Yan",
+    "author": "Eugene Yan \u2014 Anthropic (ex-Amazon, Alibaba)",
+    "desc": "Author of \"Patterns for Building LLM-based Systems\"; rigorous, practitioner-first writing on production ML/LLM patterns and evals.",
+    "url": "https://eugeneyan.com/writing/",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "mlops",
+      "genai",
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "Hamel's Blog",
+    "author": "Hamel Husain",
+    "desc": "The reference source for rigorous LLM evaluation methodology \u2014 \"Your AI Product Needs Evals\" and the widely-cited LLM-as-Judge guide.",
+    "url": "https://hamel.dev/",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "eval",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "Interconnects",
+    "author": "Nathan Lambert",
+    "desc": "The most technically serious ongoing commentary on post-training (RLHF, DPO, reasoning-model training) from someone who ships open models.",
+    "url": "https://www.interconnects.ai/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "vLLM Blog",
+    "author": "vLLM project (Red Hat + community)",
+    "desc": "Ground-truth source on LLM inference optimization internals \u2014 quantization, KV-cache management, multi-LoRA serving.",
+    "url": "https://blog.vllm.ai/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "METR Blog",
+    "author": "Model Evaluation and Threat Research",
+    "desc": "The most rigorous public source on frontier-model autonomous-capability evaluation \u2014 primary safety-eval research.",
+    "url": "https://metr.org/blog",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent",
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "Simon Willison's Weblog",
+    "author": "Simon Willison",
+    "desc": "His primary output (more valuable than his tweets) \u2014 detailed technical write-ups on LLM tool releases and biannual \"state of LLMs\" recaps.",
+    "url": "https://simonwillison.net/",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "The Illustrated Transformer (+ GPT-2/BERT)",
+    "author": "Jay Alammar",
+    "desc": "The single most-recommended conceptual explainer of transformer architecture; used in course materials at Stanford, MIT, Harvard, and CMU.",
+    "url": "https://jalammar.github.io/illustrated-transformer/",
+    "levels": [
+      "Foundational"
+    ],
+    "areas": [
+      "genai",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "12-Factor Agents",
+    "author": "Dex Horthy / HumanLayer",
+    "desc": "The best-known practitioner framework for building production-grade (not toy) LLM agents \u2014 reliability, context/control-flow, human-in-the-loop design.",
+    "url": "https://github.com/humanlayer/12-factor-agents",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "DSPy \u2014 Docs & Papers",
+    "author": "Stanford / Omar Khattab",
+    "desc": "\"Programming, not prompting\" LLMs \u2014 the most influential alternative paradigm to manual prompt-chaining, now taught in new MIT/CMU courses.",
+    "url": "https://dspy.ai/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Blogs",
+    "title": "Apollo Research Blog",
+    "author": "Apollo Research",
+    "desc": "Companion to METR \u2014 focused specifically on scheming/deceptive-alignment evals of frontier models; partnered with OpenAI on anti-scheming work in 2026.",
+    "url": "https://www.apolloresearch.ai/blog",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "AI Engineering: Building Applications with Foundation Models",
+    "author": "Chip Huyen \u2014 O'Reilly, 2025",
+    "desc": "End-to-end framework for foundation-model apps: evaluation, RAG, fine-tuning, inference optimization, guardrails. O'Reilly's most-read title since release.",
+    "url": "",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Hands-On Large Language Models",
+    "author": "Jay Alammar & Maarten Grootendorst \u2014 O'Reilly, 2024",
+    "desc": "~300 custom visuals covering embeddings, RAG, fine-tuning, and multimodal LLMs. Hands-on, code-heavy, Python notebooks throughout.",
+    "url": "",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "LLM Engineer's Handbook",
+    "author": "Paul Iusztin & Maxime Labonne \u2014 Packt, 2024",
+    "desc": "Full LLM system architecture \u2014 RAG, vector stores, fine-tuning, LLMOps integration. Hands-on, full reference project.",
+    "url": "",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Prompt Engineering for LLMs",
+    "author": "John Berryman & Albert Ziegler \u2014 O'Reilly, 2024",
+    "desc": "Written by two of the key architects of GitHub Copilot; prompt-crafting strategy, few-shot/chain-of-thought, RAG-as-prompting.",
+    "url": "",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Understanding Deep Learning",
+    "author": "Simon J.D. Prince \u2014 MIT Press, 2023",
+    "desc": "Rigorously curated modern DL text covering transformers and diffusion models that older texts lack. Free legal ebook alongside the hardcover.",
+    "url": "",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Deep Reinforcement Learning Hands-On (3rd Edition)",
+    "author": "Maxim Lapan \u2014 Packt, 2024",
+    "desc": "Adds RLHF, MuZero, and transformer-based RL on top of the established Q-learning/DQN/PPO core. Hands-on, code-heavy.",
+    "url": "",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Building Applications with AI Agents",
+    "author": "Michael Albada \u2014 O'Reilly, 2025",
+    "desc": "Practical + research-grounded coverage of tool use, memory, orchestration across LangGraph, AutoGen, CrewAI. Author built large-scale multi-agent systems at Uber, ServiceNow, Microsoft.",
+    "url": "",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Designing Multi-Agent Systems",
+    "author": "Victor Dibia \u2014 2025",
+    "desc": "Framework-agnostic first-principles teaching by building an agent framework from scratch. Author is a Principal Research Software Engineer at Microsoft Research and core AutoGen maintainer.",
+    "url": "",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Designing Machine Learning Systems",
+    "author": "Chip Huyen \u2014 O'Reilly, 2022",
+    "desc": "Data pipelines, feature engineering, deployment, monitoring, and iteration end to end, with real case studies.",
+    "url": "",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "mlops",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Books",
+    "title": "Fairness and Machine Learning: Limitations and Opportunities",
+    "author": "Solon Barocas, Moritz Hardt, Arvind Narayanan \u2014 MIT Press, 2023",
+    "desc": "Standard grad-level technical reference on algorithmic fairness \u2014 statistical/causal fairness measures plus legal/social context. Free online at fairmlbook.org.",
+    "url": "https://fairmlbook.org/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Newsletters & Communities",
+    "title": "Ahead of AI",
+    "author": "Sebastian Raschka (newsletter)",
+    "desc": "Deep technical dives into LLM architectures and fine-tuning, plus annual state-of-the-art roundups. 200,000+ subscribers.",
+    "url": "https://magazine.sebastianraschka.com/",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Newsletters & Communities",
+    "title": "Import AI",
+    "author": "Jack Clark (newsletter)",
+    "desc": "Weekly roundup of AI research plus policy implications, written by Anthropic's co-founder and former OpenAI policy lead.",
+    "url": "https://jack-clark.net/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Newsletters & Communities",
+    "title": "The Batch",
+    "author": "DeepLearning.AI / Andrew Ng (weekly newsletter)",
+    "desc": "One of the most widely-read weekly AI newsletters \u2014 good for staying current at low time cost, and a natural companion to DeepLearning.AI's course catalog.",
+    "url": "https://www.deeplearning.ai/the-batch/",
+    "levels": [
+      "Foundational",
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "core",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Newsletters & Communities",
+    "title": "OpenAI Cookbook & Anthropic Cookbook",
+    "author": "GitHub repos",
+    "desc": "Canonical, continuously-updated runnable code examples for RAG, agents, evals, and tool use \u2014 a practical complement to more conceptual content.",
+    "url": "https://github.com/openai/openai-cookbook",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "genai",
+      "agent"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Newsletters & Communities",
+    "title": "MLOps Community",
+    "author": "mlops.community (Slack + events)",
+    "desc": "70,000+ member practitioner-run community discussing real production ML/LLM reliability and infra problems \u2014 free to join.",
+    "url": "https://mlops.community/",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Newsletters & Communities",
+    "title": "Stanford HAI \u2014 AI Index Report",
+    "author": "Stanford Human-Centered AI Institute (annual report)",
+    "desc": "The most rigorous, citation-grade annual dataset on AI capability, adoption, safety incidents, and global governance trends.",
+    "url": "https://hai.stanford.edu/ai-index",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "Newsletters & Communities",
+    "title": "AI Alignment Forum / LessWrong",
+    "author": "Independent (LightCone Infrastructure)",
+    "desc": "The primary technical venue for AI safety and alignment research discourse \u2014 deep, rigorous debate on interpretability and risk.",
+    "url": "https://www.alignmentforum.org/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "A Curated List of ML System Design Case Studies",
+    "author": "Engineer1999 \u00b7 \u260510.4k",
+    "desc": "300+ real-world ML system design write-ups from 80+ companies (Netflix, Airbnb, DoorDash, etc.), organized by industry/use case. Mostly a static, high-quality snapshot rather than a frequently-refreshed list.",
+    "url": "https://github.com/Engineer1999/A-Curated-List-of-ML-System-Design-Case-Studies",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "mlops",
+      "core"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "Awesome Generative AI Guide",
+    "author": "aishwaryanr \u00b7 \u260528.3k",
+    "desc": "The strongest all-around GenAI meta-resource found \u2014 organized into Use/Build/Understand \"journeys\" across 101/201/301 levels, with dedicated pages for RAG, agents, fine-tuning, evaluation, and safety. Actively maintained.",
+    "url": "https://github.com/aishwaryanr/awesome-generative-ai-guide",
+    "levels": [
+      "Foundational",
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "genai",
+      "agent",
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "Awesome-LLM",
+    "author": "Hannibal046 \u00b7 \u260526.9k",
+    "desc": "The standard academic-leaning curated list of LLM papers, training/deployment frameworks, courses, and tutorials. Actively maintained.",
+    "url": "https://github.com/Hannibal046/Awesome-LLM",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "Awesome LLM Apps",
+    "author": "Shubhamsaboo \u00b7 \u2605128.7k",
+    "desc": "100+ hands-on, runnable agent/RAG/multi-agent/MCP examples treated as real production patterns rather than toy demos. Very actively maintained.",
+    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "agent",
+      "genai"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "Awesome Production Machine Learning",
+    "author": "EthicalML \u00b7 \u260520.6k",
+    "desc": "Curated open-source tooling map across the full production ML lifecycle \u2014 deployment, monitoring, versioning, explainability, responsible AI. Actively maintained.",
+    "url": "https://github.com/EthicalML/awesome-production-machine-learning",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "Awesome MLOps",
+    "author": "visenger \u00b7 \u260513.9k",
+    "desc": "Literature/reference-heavy complement to the above \u2014 books, papers, talks, and case studies on MLOps practice, maintained by an MLOps practitioner/author.",
+    "url": "https://github.com/visenger/awesome-mlops",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "mlops"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "Awesome-LLM-Eval",
+    "author": "onejune2018 \u00b7 \u2605649",
+    "desc": "Tools, datasets/benchmarks, demos, leaderboards, and papers specifically for LLM evaluation. One of the more actively iterated eval-specific lists.",
+    "url": "https://github.com/onejune2018/Awesome-LLM-Eval",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "GitHub Curated Lists & Repos",
+    "title": "Awesome-LLM-Safety",
+    "author": "ydyjya \u00b7 \u26051.9k",
+    "desc": "Academic-style taxonomy of LLM safety \u2014 jailbreaks/attacks, privacy, truthfulness, defenses \u2014 with paper tables. Well-organized but slower-moving; verify freshness of any specific paper.",
+    "url": "https://github.com/ydyjya/Awesome-LLM-Safety",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "eval"
+    ],
+    "isNew": false
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "Agentic Coding Recommendations",
+    "author": "Armin Ronacher (lucumr.pocoo.org)",
+    "desc": "Creator of Flask; unusually candid field notes from shifting his entire workflow to Claude Code \u2014 agent loops, context/back-pressure management, what didn't work. High signal, no hype.",
+    "url": "https://lucumr.pocoo.org/tags/ai/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "ainative"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "ghuntley.com \u2014 agent-loop engineering",
+    "author": "Geoffrey Huntley",
+    "desc": "Creator of the \"Ralph Wiggum\" brute-force autonomous-agent-loop technique, plus a free \"build your own coding agent\" workshop. Deep practitioner content on agent internals and spec-through-conversation workflows.",
+    "url": "https://ghuntley.com/",
+    "levels": [
+      "Advanced"
+    ],
+    "areas": [
+      "ainative",
+      "agent"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "Beyond Vibe Coding",
+    "author": "Addy Osmani (O'Reilly, 2025)",
+    "desc": "Former Google Chrome engineering lead. Argues for being \"editor-in-chief\" of AI-generated code rather than a passenger \u2014 a credible, non-hyped framing of the vibe-coding-vs-engineering-discipline tension. Free companion updates on his blog.",
+    "url": "https://addyosmani.com/blog/ai-assisted-engineering/",
+    "levels": [
+      "Foundational",
+      "Intermediate"
+    ],
+    "areas": [
+      "ainative"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "Skills for Real Engineers (mattpocock/skills)",
+    "author": "Matt Pocock",
+    "desc": "Portable Claude Code/Cursor/Codex Skills enforcing TDD, structured debugging, domain modeling, and architecture review \u2014 one of the most rapidly-adopted third-party Claude Code skills packs, explicitly positioned against one-shot \"vibe coding.\" See also Matt Pocock on Twitter/X.",
+    "url": "https://github.com/mattpocock/skills",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "ainative",
+      "agent"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "spec-kit",
+    "author": "GitHub (spec-driven development toolkit)",
+    "desc": "GitHub's own open-source reference implementation of spec-driven development \u2014 spec as source of truth, agent generates code from structured phases. Works across Copilot, Claude Code, Gemini CLI, and 30+ agents. Institutionally backed and actively maintained.",
+    "url": "https://github.com/github/spec-kit",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "ainative",
+      "agent"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "awesome-claude-code",
+    "author": "hesreallyhim (GitHub curated list)",
+    "desc": "Broad, actively curated collection of Claude Code skills, agents, status lines, and plugins \u2014 a good single entry point to the ecosystem without wading through SEO blogspam.",
+    "url": "https://github.com/hesreallyhim/awesome-claude-code",
+    "levels": [
+      "Foundational",
+      "Intermediate"
+    ],
+    "areas": [
+      "ainative"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "Effective Context Engineering for AI Agents",
+    "author": "Anthropic Engineering",
+    "desc": "Primary-source engineering writing on context-window management, when to use CLAUDE.md-style instructions vs. just-in-time retrieval, and skill design \u2014 the definitive reference on this specific topic (complements the general Anthropic Engineering Blog entry above).",
+    "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "ainative",
+      "agent"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "IndyDevDan",
+    "author": "YouTube + agenticengineer.com",
+    "desc": "\"Tactical Agentic Coding\" / \"Principled AI Coding\" \u2014 teaches \"Model, Prompt, Context\" as language-agnostic first principles for agentic engineering rather than tool-of-the-week hype.",
+    "url": "https://www.youtube.com/@indydevdan",
+    "levels": [
+      "Intermediate",
+      "Advanced"
+    ],
+    "areas": [
+      "ainative"
+    ],
+    "isNew": true
+  },
+  {
+    "cat": "AI-native Software Development",
+    "title": "The Pragmatic Engineer \u2014 AI coverage",
+    "author": "Gergely Orosz (newsletter)",
+    "desc": "Large, well-regarded engineering-management newsletter's dedicated AI track \u2014 interviews (Steve Yegge on agent orchestration, Kent Beck on TDD + AI agents) at the org/workflow level, not just tool tips.",
+    "url": "https://newsletter.pragmaticengineer.com/t/ai",
+    "levels": [
+      "Intermediate"
+    ],
+    "areas": [
+      "ainative",
+      "mlops"
+    ],
+    "isNew": true
+  }
+];
+
+function levelBadges(levels) {
+  return levels.map(l => `<span class="tag level-${l}">${l}</span>`).join("");
+}
+function areaBadges(areas) {
+  return areas.map(a => `<span class="tag area">${AREAS[a] || a}</span>`).join("");
+}
+
+let activeSource = null;
+let activeLevel = null;
+let activeArea = null;
+
+function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); }
+
+function buildSourceNav() {
+  const nav = document.getElementById("sourceNav");
+  nav.innerHTML = "";
+  CATEGORY_ORDER.forEach(cat => {
+    const chip = document.createElement("div");
+    chip.className = "chip" + (activeSource === cat ? " active" : "");
+    chip.textContent = cat;
+    chip.onclick = () => {
+      const wasActive = activeSource === cat;
+      activeSource = wasActive ? null : cat;
+      render();
+      buildSourceNav();
+      if (!wasActive) {
+        const el = document.getElementById("cat-" + slug(cat));
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+    nav.appendChild(chip);
+  });
+}
+
+function buildChips() {
+  const levelWrap = document.getElementById("levelChips");
+  levelWrap.innerHTML = "";
+  ["Foundational","Intermediate","Advanced"].forEach(l => {
+    const chip = document.createElement("div");
+    chip.className = "chip" + (activeLevel === l ? " active" : "");
+    chip.textContent = l;
+    chip.onclick = () => { activeLevel = activeLevel === l ? null : l; render(); buildChips(); };
+    levelWrap.appendChild(chip);
+  });
+
+  const areaWrap = document.getElementById("areaChips");
+  areaWrap.innerHTML = "";
+  Object.keys(AREAS).forEach(key => {
+    const chip = document.createElement("div");
+    chip.className = "chip" + (activeArea === key ? " active" : "");
+    chip.textContent = AREAS[key];
+    chip.onclick = () => { activeArea = activeArea === key ? null : key; render(); buildChips(); };
+    areaWrap.appendChild(chip);
+  });
+}
+
+function render() {
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const filtered = DATA.filter(item => {
+    if (activeSource && item.cat !== activeSource) return false;
+    if (activeLevel && !item.levels.includes(activeLevel)) return false;
+    if (activeArea && !item.areas.includes(activeArea)) return false;
+    if (q) {
+      const hay = (item.title + " " + item.author + " " + item.desc + " " + item.cat).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  document.getElementById("count").textContent = `${filtered.length} of ${DATA.length} resources`;
+
+  const results = document.getElementById("results");
+  results.innerHTML = "";
+
+  if (filtered.length === 0) {
+    results.innerHTML = `<div class="empty">No resources match those filters.</div>`;
+    return;
+  }
+
+  const cats = [...new Set(filtered.map(i => i.cat))];
+  CATEGORY_ORDER.filter(c => cats.includes(c)).forEach(cat => {
+    const items = filtered.filter(i => i.cat === cat);
+    const block = document.createElement("div");
+    block.className = "category-block";
+    block.id = "cat-" + slug(cat);
+    const note = CATEGORY_NOTES[cat];
+    const noteHtml = note ? `<div class="cat-note">${note}</div>` : "";
+    block.innerHTML = `<h2>${cat} (${items.length})</h2>${noteHtml}<div class="grid"></div>`;
+    const grid = block.querySelector(".grid");
+    items.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card" + (item.isNew ? " is-new" : "");
+      const titleHtml = item.url ? `<a href="${item.url}" target="_blank" rel="noopener">${item.title}</a>` : item.title;
+      const newBadge = item.isNew ? `<span class="new-badge">NEW</span>` : "";
+      card.innerHTML = `
+        <div class="card-top"><h3>${titleHtml}</h3>${newBadge}</div>
+        <div class="author">${item.author}</div>
+        <p class="desc">${item.desc}</p>
+        <div class="tags">${levelBadges(item.levels)}${areaBadges(item.areas)}</div>
+      `;
+      grid.appendChild(card);
+    });
+    results.appendChild(block);
+  });
+}
+
+document.getElementById("search").addEventListener("input", render);
+buildSourceNav();
+buildChips();
+render();
+</script>
+</body>
+</html>
