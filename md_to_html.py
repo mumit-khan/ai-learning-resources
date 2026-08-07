@@ -302,6 +302,7 @@ def parse_markdown(text):
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="referrer" content="no-referrer">
 <meta charset="UTF-8">
 <title>Agentic AI / ML / GenAI Learning Resources</title>
 <style>
