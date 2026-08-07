@@ -169,10 +169,6 @@ Curated August 2026, reviewed and expanded across several follow-up passes. Ever
   How the Model Context Protocol works under the hood, building your own MCP server, connecting it to Claude-powered apps.
   https://www.deeplearning.ai/courses/mcp-build-rich-context-ai-apps-with-anthropic
 
-- **How Transformer LLMs Work** — DeepLearning.AI — Jay Alammar & Maarten Grootendorst — *Foundational* — Core ML, GenAI — **NEW**
-  ~1h45 visual walkthrough of what actually happens inside a transformer — tokenization and embeddings, the attention/feed-forward stack, and the inference-time tricks that make it fast (KV cache, grouped-query attention, Mixture of Experts). The clearest on-ramp to architecture literacy for engineers who use LLMs but have never opened one up.
-  https://www.deeplearning.ai/courses/how-transformer-llms-work
-
 - **Building and Evaluating Advanced RAG** — DeepLearning.AI — Jerry Liu & Anupam Datta — *Advanced* — GenAI
   Sentence-window and auto-merging retrieval, experiment tracking, and the "RAG triad" for rigorous evaluation. Assumes a working RAG baseline.
   https://www.deeplearning.ai/courses/building-evaluating-advanced-rag
@@ -192,10 +188,6 @@ Curated August 2026, reviewed and expanded across several follow-up passes. Ever
 - **Stanford CS25: Transformers United (V6)** — YouTube / Stanford University — *Advanced* — Core ML, Agentic AI
   Graduate seminar series with rotating leading researchers (Hinton, Karpathy, original Transformer authors) on transformer internals and scaling.
   https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM
-
-- **Stanford CS224N: NLP with Deep Learning (Spring 2024)** — YouTube / Stanford Online — Christopher Manning — *Intermediate/Advanced* — Core ML, GenAI — **NEW**
-  The full lecture series that trained a generation of NLP engineers, rebuilt around LLMs: word vectors and backprop through attention, transformers, pretraining, post-training (RLHF/DPO), and efficient adaptation. Ground-up theory to pair with the code-first courses above — take the Spring 2024 playlist, not the older ones.
-  https://www.youtube.com/playlist?list=PLoROMvodv4rOaMFbaqxPDoLWjDaRAdP9D
 
 - **Practical Deep Learning for Coders** — fast.ai — Jeremy Howard & Sylvain Gugger — *Foundational* — Core ML, GenAI
   Code-first, top-down pedagogy — train a real model in lesson 1, learn theory after. No PhD-level math required. Still actively taught and referenced in 2026.
@@ -264,6 +256,10 @@ Curated August 2026, reviewed and expanded across several follow-up passes. Ever
 - **The Illustrated Transformer (+ GPT-2/BERT)** — Jay Alammar — *Foundational* — GenAI, Core ML
   The single most-recommended conceptual explainer of transformer architecture; used in course materials at Stanford, MIT, Harvard, and CMU.
   https://jalammar.github.io/illustrated-transformer/
+
+- **Guide to All 70+ Scikit-Learn Models and When to Use Them** — Wei Ming T. / ApX Machine Learning — *Foundational/Intermediate* — Core ML — **NEW**
+  Overview of 75 scikit-learn ML models grouped by task (regression, classification, ensembles, clustering, dimensionality reduction, neural nets), each with a code snippet and, more usefully, an explicit "when to avoid" section; 23 are starred as the shortlist worth actually knowing. A selection lookup table, not a course.
+  https://apxml.com/posts/scikit-learn-models-guide
 
 - **12-Factor Agents** — Dex Horthy / HumanLayer — *Advanced* — Agentic AI, MLOps
   The best-known practitioner framework for building production-grade (not toy) LLM agents — reliability, context/control-flow, human-in-the-loop design.
